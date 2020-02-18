@@ -1,6 +1,6 @@
 import  pygame
-from  process_image import get_output_image
-
+import process_digits
+import  process_leters
 
 # defining colors
 black = [0,0,0]
@@ -13,6 +13,16 @@ height = 800
 radius = 7
 last_pos = (0, 0)
 draw_on = False
+typ = ''
+
+print("\n1)Digits \n2)Letters \nEnter your choice : ",end="")
+ch = int(input())
+
+if ch == 1 :
+    typ = 'digits'
+else :
+    typ = 'letters'
+
 
 # start the screen
 screen = pygame.display.set_mode((width*2,height))
@@ -72,7 +82,10 @@ try :
             img = crope(screen)
             pygame.image.save(img, img_name)
 
-            output_image = get_output_image(img_name)
+            if ch == 1 :
+                output_image = process_digits.get_output_image(img_name,typ)
+            else :
+                output_image = process_leters.get_output_image(img_name,typ)
             show_output_image(output_image)
 
         # start drawing line on screen if draw is true
