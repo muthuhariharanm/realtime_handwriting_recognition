@@ -8,10 +8,7 @@ from keras.models import load_model
 alpha = ['','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o',
         'p','q','r','s','t','u','v','w','x','y','z']
 
-digit_model   = 'models/digits.h5'
-letters_model = 'models/letters.h5'
-
-model = load_model('models/digits.h5')
+model = load_model('models/handwritten_digits.h5')
 
 def predict_digit(model,img):
     test_image = img.reshape(-1,28,28,1)
@@ -51,12 +48,7 @@ def image_refiner(gray):
     return gray
 
 
-def get_output_image(path, typ) :
-
-   # if typ == 'digits' :
-   # model = load_model(digit_model)
-    # else : 
-    #     model = load_model(letters_model)
+def get_output_image(path) :
 
     img = cv2.imread(path,2)
     img_org =  cv2.imread(path)

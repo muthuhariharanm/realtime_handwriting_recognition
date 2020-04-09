@@ -5,11 +5,10 @@ from scipy import ndimage
 import math
 from keras.models import load_model
 
-alpha = ['','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o',
+alpha = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o',
         'p','q','r','s','t','u','v','w','x','y','z']
 
-
-model = load_model('models/handwritten_alphabets.h5')
+model = load_model('models/handwritten_digits_alphabets.h5')
 
 def predict_digit(model,img):
     test_image = img.reshape(-1,28,28,1)

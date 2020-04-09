@@ -1,6 +1,7 @@
 import  pygame
 import process_digits
 import  process_leters
+import process_both
 
 # defining colors
 black = [0,0,0]
@@ -15,14 +16,15 @@ last_pos = (0, 0)
 draw_on = False
 typ = ''
 
-print("\n1)Digits \n2)Letters \nEnter your choice : ",end="")
+print("\n1)Digits \n2)Letters \n3)Both \nEnter your choice : ",end="")
 ch = int(input())
 
 if ch == 1 :
     typ = 'digits'
-else :
+elif ch == 2 :
     typ = 'letters'
-
+else :
+    typ = 'both'
 
 # start the screen
 screen = pygame.display.set_mode((width*2,height))
@@ -83,9 +85,11 @@ try :
             pygame.image.save(img, img_name)
 
             if ch == 1 :
-                output_image = process_digits.get_output_image(img_name,typ)
+                output_image = process_digits.get_output_image(img_name)
+            elif ch == 2 :
+                output_image = process_leters.get_output_image(img_name)
             else :
-                output_image = process_leters.get_output_image(img_name,typ)
+                output_image = process_both.get_output_image(img_name)
             show_output_image(output_image)
 
         # start drawing line on screen if draw is true
